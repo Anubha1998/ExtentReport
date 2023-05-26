@@ -5,7 +5,4 @@ steps:
     connection: Extent
 
 - script: ' mvn test -D suite=android_parallel.xml '
-  displayName: 'Command Line Script'
-
-- task: Lambdatest.lambda-azure-pipeline-extention.showResults-task.LambdatestResults@1
-  displayName: 'Lambdatest Results'
+ 
