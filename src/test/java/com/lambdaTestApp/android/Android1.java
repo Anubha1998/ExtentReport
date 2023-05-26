@@ -1,40 +1,67 @@
 package com.lambdaTestApp.android;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.net.MalformedURLException;
+import java.util.Map;
 
+import com.lambdatest.utils.ExtentReportListener;
+import com.lambdatest.utils.LambdaTestApi;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+
 
 public class Android1 extends AppUploadAndroid{
 
         String userName = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        private String Status = "failed";        
+        private String Status = "failed";
+        @BeforeClass
+        public void setup(){
+               ExtentReportListener reporter = new ExtentReportListener();
+                ExtentReportListener.onTestStart();
+        }
+
         @Test
-        public void basicTest() throws IOException, InterruptedException {
+        @org.testng.annotations.Parameters(value = {"device", "platform"})
+
+
+
+        public void basicTest(String device, String platform) throws IOException, InterruptedException, JSONException, URISyntaxException {
                 upload();
                 DesiredCapabilities caps = new DesiredCapabilities();
-                caps.setCapability("deviceName", "Galaxy S21");
+                caps.setCapability("deviceName", device);
                 caps.setCapability("isRealMobile", true);
-                caps.setCapability("platformVersion","11");
-                caps.setCapability("platformName", "Android");
-                caps.setCapability("build", "Android");
-                caps.setCapability("name", "Single Test");
+              //  caps.setCapability("platformVersion",version);
+                caps.setCapability("platformName", platform);
+                caps.setCapability("build", "Extent Report Parallel-4");
+                caps.setCapability("name", "Extent Report Parallel-4");
                 caps.setCapability("app", "android_appurl");
                 caps.setCapability("appProfiling", true);
+                LambdaTestApi ltApi = new LambdaTestApi();
+               /* ExtentReportListener reporter = new ExtentReportListener(); */
 
                 AndroidDriver<AndroidElement> driver = new AndroidDriver<AndroidElement>(
                                 new URL("https://" + userName + ":" + accessKey + "@beta-hub.lambdatest.com/wd/hub"),
                                 caps);
+                       /*  ExtentReportListener.onTestStart(); */
+
+                SessionId sessionid = ((AndroidDriver) driver).getSessionId();
+                System.out.println(sessionid);
                 WebDriverWait wait = new WebDriverWait(driver, 10);
                 AndroidElement searchElement = (AndroidElement) wait
                                 .until(ExpectedConditions
@@ -49,11 +76,27 @@ public class Android1 extends AppUploadAndroid{
                 List<AndroidElement> allProductsName = driver.findElementsByClassName("android.widget.TextView");
                 assert (allProductsName.size() > 0);
 
-                Status = "passed";
-                driver.executeScript("lambda-status=" + Status);
+                String session_id = sessionid.toString();
+                System.out.println("Response is "+ ltApi.getSessionDetails(session_id));
+                String sessionName = ltApi.getValue(ltApi.getSessionDetails(session_id), "name");
+                System.out.println(ltApi.getSessionDetails(session_id));
+                ltApi.markTestStatus(session_id, "PASSED", "Pass");
+
+                JSONObject videoResponse = ltApi.getVideo(session_id);
+                Map<String, String> metadata = new LinkedHashMap<String, String>();
+                metadata.put("View Test", "<a href='https://automation.lambdatest.com/test?sessionId="+session_id+"' target='_blank'>Logs</a>");
+                metadata.put("Download Test", "<a href='"+videoResponse.getString("url")+"'>Video</a>");
+                metadata.put("Watch Test ", "<video width='400' controls><source src='"+videoResponse.getString("url")+"' type='video/mp4'></video>");
+               ExtentReportListener.onTestPass(sessionName, metadata);
+
                 // The driver.quit statement is required, otherwise the test continues to
             // execute, leading to a timeout.
                 driver.quit();
-                
+
+
+                        ExtentReportListener.onFinish();
+
         }
+
+
 }

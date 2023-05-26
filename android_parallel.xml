@@ -1,10 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="5" parallel="tests" name="Suite">
-  <test thread-count="5" parallel="classes" name="Test">
+<suite thread-count="100" name="Mobile" parallel="tests">
+
+  <test thread-count="100" parallel="classes" name="Test">
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Galaxy.*" />
     <classes>
-      <class name="com.lambdaTestApp.android.Android1"/>
-      <class name="com.lambdaTestApp.android.Android2"/>
+      <class name="com.lambdaTestApp.android.Android1" />
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test>
+
+  <test name="Test1">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Galaxy S22 5G" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test2">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Pixel .*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test3">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="OnePlus .*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test4">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Huawei .*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test5">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Moto .*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test6">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="galaxy.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test7">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Galaxy.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test8">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="OnePlus.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test9">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="OnePlus.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test10">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Pixel.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test11">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Galaxy.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test12">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Nothing Phone (1)" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test13">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Oppo.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test14">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Oppo.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test15">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Oppo.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test16">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Redmi.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test17">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Redmi.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test18">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="OnePlus.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test19">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="OnePlus.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test20">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="Galaxy.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+  <test name="Test21">
+
+    <parameter name="platform" value="Android" />
+    <parameter name="device" value="galaxy.*" />
+    <classes>
+      <class name="com.lambdaTestApp.android.Android1" />
+    </classes>
+  </test>
+
+</suite>
