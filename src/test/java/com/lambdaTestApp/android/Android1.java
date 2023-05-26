@@ -48,8 +48,8 @@ public class Android1 extends AppUploadAndroid{
                 caps.setCapability("isRealMobile", true);
               //  caps.setCapability("platformVersion",version);
                 caps.setCapability("platformName", platform);
-                caps.setCapability("build", "Extent Report Parallel-5");
-                caps.setCapability("name", "Extent Report Parallel-5");
+                caps.setCapability("build", "Extent Report Parallel-6");
+                caps.setCapability("name", "Extent Report Parallel-6");
                 caps.setCapability("app", "android_appurl");
                 caps.setCapability("appProfiling", true);
                 LambdaTestApi ltApi = new LambdaTestApi();
