@@ -27,8 +27,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class Android1 extends AppUploadAndroid{
 
-        String userName = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
-        String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
+        String userName = "anubhas";
+        String accessKey = "OmOOOshGyRoUgkriuFPDqahTb1fHdRHGXFPyStZb3BEXIQi1hg";
         private String Status = "failed";
         @BeforeClass
         public void setup(){
