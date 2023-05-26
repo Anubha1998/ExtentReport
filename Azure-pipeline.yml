@@ -1,18 +1,13 @@
-
 steps:
 - task: Lambdatest.lambda-azure-pipeline-extention.configuration-task.configuration@1
   displayName: 'LambdaTest configuration setup'
   inputs:
-    connection: service1
+    connection: Extent
 - script: |
    mvn clean install -DskipTests
-   
-   
+
+- script: ' mvn test -D suite=android_parallel.xml '
   displayName: 'Command Line Script'
 
-steps:
-- script: ' mvn test -D suite=android_parallel.xml'
-  displayName: 'Command Line Script'
-steps:
 - task: Lambdatest.lambda-azure-pipeline-extention.showResults-task.LambdatestResults@1
   displayName: 'Lambdatest Results'
