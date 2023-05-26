@@ -3,8 +3,6 @@ steps:
   displayName: 'LambdaTest configuration setup'
   inputs:
     connection: Extent
-- script: |
-   mvn clean install -DskipTests
 
 - script: ' mvn test -D suite=android_parallel.xml '
   displayName: 'Command Line Script'
