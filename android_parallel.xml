@@ -40,7 +40,7 @@
   <test name="Test4">
 
     <parameter name="platform" value="Android" />
-    <parameter name="device" value="Huawei .*" />
+    <parameter name="device" value="Galaxy.*" />
     <classes>
       <class name="com.lambdaTestApp.android.Android1" />
     </classes>
