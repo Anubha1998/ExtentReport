@@ -28,7 +28,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class Android1 extends AppUploadAndroid{
 
         String userName = "anubhas";
-        String accessKey = "OmOOOshGyRoUgkriuFPDqahTb1fHdRHGXFPyStZb3BEXIQi1hg";
+        String accessKey = "JvGShZ2Bm8RdgmGFbbx4ZtbOb6DeQ8nqSvtHDZdDY7PzqaZMTq";
         private String Status = "failed";
         @BeforeClass
         public void setup(){
