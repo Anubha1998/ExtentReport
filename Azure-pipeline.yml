@@ -1,8 +1,26 @@
 steps:
-- task: Lambdatest.lambda-azure-pipeline-extention.configuration-task.configuration@1
-  displayName: 'LambdaTest configuration setup'
-  inputs:
-    connection: Extent
-
-- script: ' mvn test -D suite=android_parallel.xml '
- 
+  - task: >-
+      Lambdatest.lambda-azure-pipeline-extention.configuration-task.configuration@1
+    displayName: LambdaTest configuration setup
+    inputs:
+      connection: Extent
+      steps: null
+  - powershell: >
+      Invoke-WebRequest -Uri
+      "https://github.com/Anubha1998/ExtentReport/raw/main/apps/WikipediaSample.apk"
+      -OutFile "$(System.DefaultWorkingDirectory)/WikipediaSample.apk"
+    displayName: PowerShell Script
+    steps: null
+  - powershell: |
+      ls -l "$(System.DefaultWorkingDirectory)"
+    displayName: PowerShell Script
+    steps: null
+  - bash: >
+      curl --location "https://manual-api.lambdatest.com/app/upload/realDevice"
+      \
+         --header "Authorization: Basic YW51YmhhczpKdkdTaFoyQm04UmRnbUdGYmJ4NFp0Yk9iNkRlUThucVN2dEhEWmREWTdQenFhWk1UcQ==" \
+         -F "appFile=@$(System.DefaultWorkingDirectory)/WikipediaSample.apk" \
+         -F "custom_id=android_appurl" \
+         -F "name=abc"
+    displayName: Bash Script
+  - script: ' mvn test -D suite=android_parallel.xml '
