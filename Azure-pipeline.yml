@@ -12,7 +12,7 @@ steps:
       
       displayName: "Command Line Script"
 
-      - task: Lambdatest.lambda-azure-pipeline-extention.showResults-task.LambdatestResults@1
+  - task: Lambdatest.lambda-azure-pipeline-extention.showResults-task.LambdatestResults@1
     displayName: "Lambdatest Results"
     env:
       LT_BUILD_NAME: Extent Report Parallel-6
