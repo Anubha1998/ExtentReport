@@ -1,9 +1,9 @@
 steps:
   - task: Lambdatest.lambda-azure-pipeline-extention.configuration-task.configuration@1
-    displayName: "LambdaTest configuration setup"
+    displayName: LambdaTest configuration setup
     inputs:
-      connection: "Extent"
-      isTunnelActivate: true
+      connection: Extent
+
     env:
       LT_BUILD_NAME: Extent Report Parallel-6
 
