@@ -7,6 +7,7 @@ steps:
 
     env:
       LT_BUILD_NAME: Extent Report Parallel-6
+      
 
   - script: |
       mvn test -D suite=android_parallel.xml
