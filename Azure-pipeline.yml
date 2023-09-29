@@ -13,4 +13,4 @@ steps:
       - task: Lambdatest.lambda-azure-pipeline-extention.showResults-task.LambdatestResults@1
     displayName: "Lambdatest Results"
     env:
-      LT_BUILD_NAME: Test_Sample_Playwright
+      LT_BUILD_NAME: Extent Report Parallel-6
