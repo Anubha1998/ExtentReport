@@ -26,14 +26,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 
 public class Android1 extends AppUploadAndroid{
-
+        String build = System.getenv("LT_BUILD_NAME") == null ? "Extent Report Parallel-6" : System.getenv("LT_BUILD_NAME");
         String userName = "anubhas";
         String accessKey = "JvGShZ2Bm8RdgmGFbbx4ZtbOb6DeQ8nqSvtHDZdDY7PzqaZMTq";
         private String Status = "failed";
         @BeforeClass
         public void setup(){
                ExtentReportListener reporter = new ExtentReportListener();
-                ExtentReportListener.onTestStart();
+               ExtentReportListener.onTestStart();
         }
 
         @Test
@@ -48,7 +48,7 @@ public class Android1 extends AppUploadAndroid{
                 caps.setCapability("isRealMobile", true);
               //  caps.setCapability("platformVersion",version);
                 caps.setCapability("platformName", platform);
-                caps.setCapability("build", "Extent Report Parallel-6");
+                caps.setCapability("build", build);
                 caps.setCapability("name", "Extent Report Parallel-6");
                 caps.setCapability("app", "android_appurl");
                 caps.setCapability("appProfiling", true);
