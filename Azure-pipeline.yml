@@ -3,6 +3,7 @@ steps:
     displayName: LambdaTest configuration setup
     inputs:
       connection: Extent
+  
 
     env:
       LT_BUILD_NAME: Extent Report Parallel-6
