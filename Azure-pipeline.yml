@@ -9,7 +9,8 @@ steps:
       LT_BUILD_NAME: Extent Report Parallel-6
 
   - script: |
-      'mvn test -D suite=android_parallel.xml'
+      mvn test -D suite=android_parallel.xml
+     displayName: "Command Line Script"
 
       - task: Lambdatest.lambda-azure-pipeline-extention.showResults-task.LambdatestResults@1
     displayName: "Lambdatest Results"
