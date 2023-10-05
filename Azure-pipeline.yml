@@ -4,15 +4,20 @@ steps:
     inputs:
       connection: Extent
 
-    env:
-      LT_BUILD_NAME: Extent Report Parallel-6
+  - powershell: >
+      Invoke-WebRequest -Uri "https://github.com/Anubha1998/ExtentReport/raw/main/apps/WikipediaSample.apk" -OutFile "$(System.DefaultWorkingDirectory)/WikipediaSample.apk"
+    displayName: PowerShell Script
 
-  - script: |
-      mvn test -D suite=android_parallel.xml
-      
-      displayName: "Command Line Script"
+  - powershell: |
+      ls -l "$(System.DefaultWorkingDirectory)"
+    displayName: PowerShell Script
 
-  - task: Lambdatest.lambda-azure-pipeline-extention.showResults-task.LambdatestResults@1
-    displayName: "Lambdatest Results"
-    env:
-      LT_BUILD_NAME: Extent Report Parallel-6
+  - bash: >
+      curl --location "https://manual-api.lambdatest.com/app/upload/realDevice" \
+         --header "Authorization: Basic YW51YmhhczpKdkdTaFoyQm04UmRnbUdGYmJ4NFp0Yk9iNkRlUThucVN2dEhEWmREWTdQenFhWk1UcQ==" \
+         -F "appFile=@$(System.DefaultWorkingDirectory)/WikipediaSample.apk" \
+         -F "custom_id=android_appurl" \
+         -F "name=abc"
+    displayName: Bash Script
+
+  - script: 'mvn test -D suite=android_parallel.xml'
